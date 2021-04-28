@@ -15,8 +15,8 @@
                     @endif
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <div class=" pb-3"><strong>Name:</strong> {{$company->name}}</div>
-                            <div class=" pb-3"><strong>Email:</strong> {{$company->email}}</div>
+                            <div class=" pb-1"><strong>Name:</strong> {{$company->name}}</div>
+                            <div class=" pb-1"><strong>Email:</strong> {{$company->email}}</div>
                             <div class=" pb-1"><strong>Website:</strong> {{$company->website}}</div>
                             <div class=" pb-3"><strong> <img class="img-fluid" src="{{asset("storage/logos/$company->logo")}}" alt=""></strong></div>
                             <ul class="list-group ml-5">

@@ -15,18 +15,16 @@
                     @endif
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <div class=" pb-3"><strong>Name:</strong> {{$company->name}}</div>
-                            <div class=" pb-3"><strong>Email:</strong> {{$company->email}}</div>
-                            <div class=" pb-1"><strong>Website:</strong> {{$company->website}}</div>
-                            <div class=" pb-3"><strong> <img class="img-fluid" src="{{asset("storage/logos/$company->logo")}}" alt=""></strong></div>
-                            <ul class="list-group ml-5">
-                                    @foreach($company->employees as $employee)
-                                    <li class="list-group-item">{{$employee->firstName}} {{$employee->lastName}} </li>
-                                    @endforeach
-                                </ul>
+                            <div class=" pb-1"><strong>First name:</strong> {{$employee->firstName}}</div>
+                            <div class=" pb-1"><strong>Last name:</strong> {{$employee->lastName}}</div>
+                            <div class=" pb-1"><strong>Email:</strong> {{$employee->email}}</div>
+                            <div class=" pb-1"><strong>Phone:</strong> {{$employee->phone}}</div>
+                            <div class=" pb-1"><strong>Company:</strong> {{$employee->company->name}}</div>
+                            
+                           
                             <div class=" pt-3 pb-3">
-                                <a href="{{route('companies.edit', ['company' => $company->id])}}" class="btn btn-secondary">Edit</a>
-                                <form action="{{route('companies.destroy', ['company' => $company->id])}}" method="POST" class="d-inline">
+                                <a href="{{route('employees.edit', ['employee' => $employee->id])}}" class="btn btn-secondary">Edit</a>
+                                <form action="{{route('employees.destroy', ['employee' => $employee->id])}}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">

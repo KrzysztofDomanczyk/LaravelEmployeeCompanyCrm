@@ -18,8 +18,8 @@ class CompanyController extends Controller
     public function index()
     {
         return view('company.index',[
-                'companies' => Company::paginate(10)
-            ]);
+            'companies' => Company::orderBy('created_at', 'desc')->paginate(10)
+        ]);
     }
 
     /**
