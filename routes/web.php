@@ -14,15 +14,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes(['register' => false]);
-Route::resources([
-    'companies' => 'CompanyController',
-    'employees' => 'EmployeeController',
-]);
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::resources([
+        'companies' => 'CompanyController',
+        'employees' => 'EmployeeController',
+    ]);
 });
+
+Route::get('/tokens/create', function () {
+    $token = Auth::user()->createToken(Str::random(10));
+    return ['token' => $token->plainTextToken];
+})->name('getToken');
+
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'CompanyController@index')->name('home');
 

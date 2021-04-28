@@ -80,6 +80,19 @@
         </nav>
 
         <main class="py-4">
+           
+            @if(Auth::check())     
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-8">
+                        <div class="pb-2" role="alert">
+                        <a href="{{route('getToken')}}" class="btn btn-success">Get token API</a>
+                        </div>
+                </div>
+           
+            </div>
+            @endif
+            </div>
             @yield('content')
         </main>
     </div>

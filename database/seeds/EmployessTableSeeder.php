@@ -15,7 +15,7 @@ class EmployessTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i=1; $i <= 600 ; $i++) { 
+        for ($i=1; $i <= 100 ; $i++) { 
             DB::table('employees')->insert([
                 'firstName' => $faker->firstName,
                 'lastName' => $faker->lastName,

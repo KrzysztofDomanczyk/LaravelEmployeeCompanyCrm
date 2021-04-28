@@ -14,7 +14,7 @@ class StoreCompany extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return true;
     }
 
     /**
@@ -27,6 +27,7 @@ class StoreCompany extends FormRequest
         return [
             'name' => 'required',
             'logo' => 'dimensions:width=100,height=100',
+            'email' => 'email:rfc,dns'
         ];
     }
 }
