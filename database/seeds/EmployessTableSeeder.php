@@ -15,12 +15,12 @@ class EmployessTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i=1; $i <= 20 ; $i++) { 
+        for ($i=1; $i <= 600 ; $i++) { 
             DB::table('employees')->insert([
-                'firstName' => $faker->company,
-                'lastName' => $faker->company,
+                'firstName' => $faker->firstName,
+                'lastName' => $faker->lastName,
                 'email' => $faker->email,
-                'phone' => $faker->email,
+                'phone' => $faker->tollFreePhoneNumber,
             ]);
 
             $company = Company::inRandomOrder()->first();

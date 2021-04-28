@@ -21,7 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->unsignedInteger('company_id')->nullable();
-            $table->foreign('company_id')->references('id')->on('companies')->unsigned();
+            $table->foreign('company_id')->references('id')->on('companies')->unsigned()->onDelete('set null');
         });
     }
 

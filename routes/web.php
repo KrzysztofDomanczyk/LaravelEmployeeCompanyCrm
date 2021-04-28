@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['register' => false]);
+Route::resources([
+    'companies' => 'CompanyController',
+    'employees' => 'EmployeeController',
+]);
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['register' => false]);
+Route::get('/home', 'CompanyController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');

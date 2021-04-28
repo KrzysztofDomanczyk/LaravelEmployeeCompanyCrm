@@ -14,7 +14,7 @@ class CompaniesTableSeeder extends Seeder
     {
         $faker = Faker::create();
     
-        for ($i=0; $i < 5 ; $i++) { 
+        for ($i=0; $i < 50 ; $i++) { 
             DB::table('companies')->insert([
                 'name' => $faker->company,
                 'email' => $faker->email,
