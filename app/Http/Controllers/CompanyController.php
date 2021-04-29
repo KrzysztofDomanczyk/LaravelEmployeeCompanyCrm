@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Http\Requests\StoreCompany;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use ImageOptimizer;
+use League\CommonMark\Inline\Element\Image;
 
 class CompanyController extends Controller
 {
@@ -58,6 +61,7 @@ class CompanyController extends Controller
             $file->storeAs(
                 'logos', $name,'public'
             );
+            ImageOptimizer::optimize(storage_path('app/public') . '/'. "logos\\". $name);
             $company->logo = $name;
             $company->save();
         }
@@ -110,7 +114,7 @@ class CompanyController extends Controller
 
         return redirect()->route('companies.show',[
             'company' => $company->id
-            ])->with('status', 'Company updated sucessfully.');  
+        ])->with('status', 'Company updated sucessfully.');  
     }
 
     /**

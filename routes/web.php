@@ -22,14 +22,16 @@ Route::middleware(['auth'])->group(function () {
         'companies' => 'CompanyController',
         'employees' => 'EmployeeController',
     ]);
+
+    Route::get('/tokens/create', function () {
+        $token = Auth::user()->createToken(Str::random(10));
+        return ['token' => $token->plainTextToken];
+    })->name('getToken');
+
+    Route::get('/home', 'CompanyController@index')->name('home');
+    Route::get('/', 'CompanyController@index')->name('home');
+
 });
 
-Route::get('/tokens/create', function () {
-    $token = Auth::user()->createToken(Str::random(10));
-    return ['token' => $token->plainTextToken];
-})->name('getToken');
-
 Auth::routes(['register' => false]);
-
-Route::get('/home', 'CompanyController@index')->name('home');
 

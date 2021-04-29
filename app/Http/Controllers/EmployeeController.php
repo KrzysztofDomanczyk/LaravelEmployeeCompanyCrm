@@ -100,7 +100,7 @@ class EmployeeController extends Controller
 
         return redirect()->route('employees.show',[
             'employee' => $employee->id
-            ])->with('status', 'Employee updated sucessfully.');  
+        ])->with('status', 'Employee updated sucessfully.');  
     }
 
     /**

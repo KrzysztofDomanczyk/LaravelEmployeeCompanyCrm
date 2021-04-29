@@ -31,9 +31,11 @@
                             </div>
                             <div class="form-group">
                                     <label for="exampleInputEmail1">Company</label>
+                              
                                     <select class="form-control form-control-sm" name="company">
+                                      
                                         @foreach ($companies as $company)
-                                        <option value="{{$company->id}}">{{$company->name}}</option>
+                                            <option value="{{$company->id}}" @if($employee->company_id == $company->id) selected @endif> {{$company->id}} {{$company->name}}  </option>
                                         @endforeach
                                     </select>
                             </div>
